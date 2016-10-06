@@ -1,0 +1,23 @@
+{
+  "name": "fruit-stall",
+  "version": "1.0.0",
+  "description": "\"This is a ecommerce website for farmers\"",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/styel07/fruit-stall.git"
+  },
+  "author": "Eleazar Corpuz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/styel07/fruit-stall/issues"
+  },
+  "homepage": "https://github.com/styel07/fruit-stall#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "morgan": "^1.7.0"
+  }
+}
