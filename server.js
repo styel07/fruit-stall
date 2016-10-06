@@ -1,8 +1,17 @@
 const express = require('express');
 const morgan = require('morgan');
+const mongoose = require('mongoose');
 
 const app = express();
 const PORT = 3000;
+
+mongoose.connect('mongodb://root:qwerty@ds051863.mlab.com:51863/db_ecommerce', function(err) {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('Connected to the databse');
+  }
+});
 
 app.use(morgan('dev'));
 
