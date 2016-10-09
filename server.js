@@ -1,6 +1,9 @@
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+
+const User = require('./models/user');
 
 const app = express();
 const PORT = 3000;
@@ -14,15 +17,20 @@ mongoose.connect('mongodb://root:qwerty@ds051863.mlab.com:51863/db_ecommerce', f
 });
 
 app.use(morgan('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true}));
 
+app.post('/create-user', function(req, res, next) {
+  var user = new User();
+  user.profile.name = req.body.name;
+  user.password = req.body.password;
+  user.email = req.body.email;
 
-app.get('/', function(req, res) {
-  var name = 'eL';
-  res.json('my Name is ' + name);
-});
+  user.save(function(err) {
+    if (err) return next(err);
 
-app.get('/fruit', function(req, res) {
-  res.json('the fruit is a banana');
+    res.json('Success! Created new user');
+  });
 });
 
 app.listen(PORT, function(err) {

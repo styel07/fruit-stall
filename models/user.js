@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt-nodejs');
 const Schema = mongoose.Schema;
 
 /* User Schema attributes / fields */
-let UserSchema = new mongoose.Schema({
+var UserSchema = new mongoose.Schema({
   email: { type: String, unique: true, lowercase: true },
   password: String,
   profile: {
@@ -18,7 +18,7 @@ let UserSchema = new mongoose.Schema({
 
 /* Hash password before we even save it to the database */
 UserSchema.pre('save', function(next) {
-  let user = this;
+  var user = this;
   if (!user.isModified('password')) return next();
   bcrypt.genSalt(10, function(err, salt) {
     if (err) return next(err);
